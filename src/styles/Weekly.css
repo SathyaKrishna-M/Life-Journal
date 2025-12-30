@@ -1,0 +1,86 @@
+.weekly-page {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding-bottom: 0;
+}
+
+.weekly-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    flex-shrink: 0;
+}
+
+/* ... existing styles ... */
+
+.week-range {
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+}
+
+.top-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    flex-shrink: 0;
+}
+
+/* ... existing styles ... */
+
+.week-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    /* Force 7 columns */
+    gap: 0.8rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    flex: 1;
+    min-height: 0;
+    padding-bottom: 1rem;
+}
+
+.day-column {
+    background: white;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-earth-3);
+    min-width: 150px;
+    /* Increased min width for better preview */
+    display: flex;
+    flex-direction: column;
+}
+
+.day-header {
+    padding: 0.8rem;
+    background-color: var(--color-earth-2);
+    color: white;
+    text-align: center;
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+
+.day-name {
+    display: block;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.day-date {
+    font-size: 1.2rem;
+    font-family: var(--font-heading);
+}
+
+.day-content {
+    flex: 1;
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+    overflow: hidden;
+}
+
+/* Adjust CreativeInput preview inside day column to fit nicely */
+.day-content .creative-input-container .input-preview {
+    border: none;
+    border-top: 1px solid var(--color-earth-3);
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+    min-height: 150px;
+}

@@ -1,0 +1,93 @@
+.goals-page {
+    /* Removed padding-bottom */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.header-section {
+    margin-bottom: 3rem;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.subtitle {
+    color: var(--color-text-light);
+    font-size: 1.1rem;
+}
+
+.goals-scroll-area {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-bottom: 2rem;
+    padding-right: 0.5rem;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.goals-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+    /* Add margin to separate from doodle section */
+}
+
+.goal-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-soft);
+    border: 1px solid transparent;
+    transition: all 0.3s;
+}
+
+.goal-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--color-pastel-sage);
+}
+
+.goal-label {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    color: var(--color-earth-1);
+    margin-bottom: 0.8rem;
+}
+
+.goal-input {
+    width: 100%;
+    height: 120px;
+    border: 1px solid var(--color-earth-3);
+    border-radius: var(--radius-md);
+    padding: 1rem;
+    resize: vertical;
+    background-color: var(--color-bg-cream);
+    color: var(--color-text-main);
+    outline: none;
+    font-size: 0.95rem;
+    transition: border-color 0.2s;
+}
+
+.goal-input:focus {
+    border-color: var(--color-clay);
+    background-color: #fff;
+}
+
+.doodle-section {
+    margin-top: 3rem;
+}
+
+.doodle-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.doodle-prompt {
+    color: var(--color-text-light);
+    margin-bottom: 1.5rem;
+}

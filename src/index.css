@@ -1,0 +1,122 @@
+:root {
+  /* Earthy Tones */
+  --color-earth-1: #8C7B70;
+  /* Warm Brown */
+  --color-earth-2: #B0A195;
+  /* Taupe */
+  --color-earth-3: #D9D2CD;
+  /* Light Beige */
+  --color-sage: #9CAF88;
+  /* Sage Green */
+  --color-clay: #C6816D;
+  /* Clay */
+
+  /* Pastel Tones */
+  --color-pastel-pink: #F2D7D5;
+  --color-pastel-sage: #D6E2C9;
+  /* Added missing pastel sage */
+  --color-pastel-lavender: #E8DAEF;
+  --color-pastel-peach: #FAE5D3;
+  --color-bg-cream: #FDFBF7;
+  /* Off-white background */
+  --color-text-main: #4A4A4A;
+  --color-text-light: #7A7A7A;
+
+  /* Typography */
+  --font-heading: 'Playfair Display', serif;
+  /* Creative serif */
+  --font-body: 'Inter', sans-serif;
+
+  /* Layout */
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.03);
+  --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.06);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  /* Prevent global scroll */
+}
+
+/* Hide scrollbar for Chrome/Safari/Opera */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+* {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg-cream);
+  color: var(--color-text-main);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  color: var(--color-earth-1);
+}
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+input,
+textarea {
+  font-family: var(--font-body);
+  background-color: #fff;
+  color: var(--color-text-main);
+  border: 1px solid var(--color-earth-3);
+  border-radius: var(--radius-md);
+}
+
+/* Animations - Global classes */
+.fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Utility for dotted background */
+.bg-dotted {
+  background-image: radial-gradient(var(--color-earth-3) 1px, transparent 1px);
+  background-size: 24px 24px;
+}

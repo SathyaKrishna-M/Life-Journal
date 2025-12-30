@@ -1,0 +1,107 @@
+.ownership-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    /* Center vertically within the main content area */
+    text-align: center;
+    position: relative;
+}
+
+.ownership-container {
+    max-width: 600px;
+    width: 100%;
+    padding: 3rem;
+    background: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    border: 1px solid var(--color-earth-3);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle background texture for the card */
+.ownership-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: radial-gradient(var(--color-earth-3) 1px, transparent 1px);
+    background-size: 20px 20px;
+    opacity: 0.3;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.title {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: var(--color-earth-1);
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.name-input-wrapper {
+    margin-bottom: 3rem;
+    position: relative;
+    z-index: 1;
+}
+
+.name-input {
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid var(--color-earth-2);
+    padding: 10px;
+    font-size: 1.8rem;
+    text-align: center;
+    font-family: var(--font-heading);
+    /* Minimal serif look */
+    color: var(--color-text-main);
+    background: transparent;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.name-input:focus {
+    border-bottom-color: var(--color-clay);
+}
+
+.name-input::placeholder {
+    color: var(--color-earth-3);
+    font-style: italic;
+}
+
+.subtext-container {
+    position: relative;
+    z-index: 1;
+    color: var(--color-text-light);
+}
+
+.purpose-text {
+    font-size: 1.1rem;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.5px;
+}
+
+.divider {
+    width: 40px;
+    height: 1px;
+    background-color: var(--color-earth-2);
+    margin: 0 auto 1.5rem auto;
+}
+
+.quote {
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--color-sage);
+}
+
+.deco-leaf {
+    margin-bottom: 1rem;
+    opacity: 0.8;
+}

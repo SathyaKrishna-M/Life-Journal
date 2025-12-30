@@ -1,0 +1,103 @@
+.layout-container {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+    background-color: var(--color-bg-cream);
+}
+
+.sidebar {
+    width: 260px;
+    background-color: #fff;
+    border-right: 1px solid var(--color-earth-3);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    /* height: 100vh; is implied by flex stretch, but good to ensure */
+    flex-shrink: 0;
+}
+
+/* ... existing sidebar-header ... */
+.sidebar-header {
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.sidebar-header h2 {
+    font-family: var(--font-heading);
+    color: var(--color-earth-1);
+    font-size: 1.8rem;
+    letter-spacing: 0.5px;
+}
+
+.nav-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.8rem 1rem;
+    text-decoration: none;
+    color: var(--color-text-light);
+    border-radius: var(--radius-md);
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.nav-item:hover {
+    background-color: var(--color-pastel-sage);
+    color: #fff;
+}
+
+.nav-item.active {
+    background-color: var(--color-earth-2);
+    color: #fff;
+    box-shadow: var(--shadow-soft);
+}
+
+.main-content {
+    flex: 1;
+    padding: 2rem;
+    /* Reduced padding */
+    height: 100%;
+    overflow: hidden;
+    /* Hide global scroll of main content area */
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1400px;
+    /* Increased max-width for better use of space */
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .layout-container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        padding: 1rem;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        border-right: none;
+        border-bottom: 1px solid var(--color-earth-3);
+    }
+
+    .nav-menu {
+        display: none;
+        /* Implement mobile menu toggle if needed, for now hidden or simple */
+    }
+
+    /* Fallback for simple mobile nav for now */
+    .sidebar {
+        overflow-x: auto;
+        /* display: flex; override above? No, keeping simple */
+    }
+}

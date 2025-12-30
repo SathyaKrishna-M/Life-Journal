@@ -1,0 +1,72 @@
+.calendar-page {
+    padding-bottom: 2rem;
+}
+
+.calendar-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.calendar-header h1 {
+    margin-bottom: 0.5rem;
+}
+
+.year-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.month-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-soft);
+    border: 1px solid var(--color-earth-3);
+}
+
+.month-title {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    color: var(--color-earth-1);
+}
+
+.days-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    text-align: center;
+}
+
+.day-header {
+    font-size: 0.8rem;
+    color: var(--color-text-light);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.day-cell {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: all 0.2s;
+}
+
+.day-cell:hover:not(.empty) {
+    background-color: var(--color-earth-3);
+}
+
+.day-cell.has-event {
+    background-color: var(--color-pastel-peach);
+    color: var(--color-text-main);
+    font-weight: 600;
+}
+
+.day-cell.empty {
+    cursor: default;
+}

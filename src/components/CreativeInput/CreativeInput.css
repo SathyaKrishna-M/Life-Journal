@@ -1,0 +1,208 @@
+.creative-input-container {
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s;
+}
+
+.input-label {
+    display: block;
+    font-family: var(--font-heading);
+    color: var(--color-earth-1);
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.input-preview {
+    min-height: 100px;
+    /* Default height */
+    border: 1px solid var(--color-earth-3);
+    border-radius: var(--radius-md);
+    padding: 1rem;
+    background-color: #fff;
+    transition: all 0.2s;
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+    overflow: hidden;
+}
+
+.creative-input-container:hover .input-preview {
+    border-color: var(--color-sage);
+    box-shadow: var(--shadow-soft);
+}
+
+.placeholder {
+    color: var(--color-text-light);
+    font-style: italic;
+}
+
+.preview-text {
+    white-space: pre-wrap;
+    width: 100%;
+}
+
+.preview-image {
+    max-width: 100%;
+    max-height: 200px;
+    object-fit: contain;
+    border-radius: var(--radius-md);
+}
+
+.edit-icon {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    opacity: 0;
+    color: var(--color-earth-2);
+    transition: opacity 0.2s;
+}
+
+.creative-input-container:hover .edit-icon {
+    opacity: 1;
+}
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 1rem;
+}
+
+.backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    z-index: 1;
+}
+
+.creative-modal {
+    background: #fff;
+    width: 90%;
+    max-width: 600px;
+    max-height: 85vh;
+    /* Use max-height instead of fixed height */
+    height: auto;
+    border-radius: var(--radius-lg);
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+}
+
+.modal-header {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--color-earth-3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--color-bg-cream);
+    flex-shrink: 0;
+}
+
+.mode-switch {
+    display: flex;
+    background: #fff;
+    padding: 4px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-earth-3);
+}
+
+.mode-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    transition: all 0.2s;
+}
+
+.mode-btn.active {
+    background: var(--color-earth-1);
+    color: #fff;
+}
+
+.close-btn {
+    padding: 0.5rem;
+    color: var(--color-text-light);
+    border-radius: 50%;
+    transition: background 0.2s;
+}
+
+.close-btn:hover {
+    background: var(--color-earth-3);
+}
+
+.modal-content {
+    flex: 1;
+    padding: 1.5rem;
+    overflow-y: auto;
+    /* Allow scrolling inside modal */
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 200px;
+}
+
+.modal-textarea {
+    flex: 1;
+    width: 100%;
+    border: 1px solid var(--color-earth-3);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    resize: none;
+    background: var(--color-bg-cream);
+    outline: none;
+}
+
+.modal-textarea:focus {
+    background: #fff;
+    border-color: var(--color-sage);
+}
+
+.modal-canvas-wrapper {
+    flex: 1;
+    border: 1px solid var(--color-earth-3);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.modal-footer {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid var(--color-earth-3);
+    background: var(--color-bg-cream);
+    display: flex;
+    justify-content: flex-end;
+}
+
+.save-btn {
+    background: var(--color-earth-1);
+    color: #fff;
+    padding: 0.8rem 2rem;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.save-btn:hover {
+    background: var(--color-clay);
+    transform: translateY(-2px);
+}
