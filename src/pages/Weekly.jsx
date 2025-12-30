@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { format, startOfWeek, addDays } from 'date-fns';
+import { format, startOfWeek, addDays, addWeeks, subWeeks } from 'date-fns';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import CreativeInput from '../components/CreativeInput/CreativeInput';
 import useLocalStorage from '../hooks/useLocalStorage';
 import '../styles/Weekly.css';
@@ -13,6 +14,9 @@ const WeeklyPlanner = () => {
         days: Array(7).fill('')
     });
 
+    const handlePrevWeek = () => setCurrentWeekStart(prev => subWeeks(prev, 1));
+    const handleNextWeek = () => setCurrentWeekStart(prev => addWeeks(prev, 1));
+
     const handlePriorityChange = (index, value) => {
         const newPriorities = [...weeklyData.priorities];
         newPriorities[index] = value;
@@ -25,14 +29,19 @@ const WeeklyPlanner = () => {
         setWeeklyData({ ...weeklyData, days: newDays });
     };
 
+    const weekKey = format(currentWeekStart, 'yyyy-MM-dd');
     const weekDays = Array.from({ length: 7 }).map((_, i) => addDays(currentWeekStart, i));
 
     return (
         <div className="weekly-page fade-in">
             <header className="weekly-header">
                 <p className="weekly-quote">“Plan softly. Live fully.”</p>
-                <div className="week-range">
-                    {format(currentWeekStart, 'MMM d')} - {format(addDays(currentWeekStart, 6), 'MMM d, yyyy')}
+                <div className="week-navigation">
+                    <button onClick={handlePrevWeek} className="nav-btn"><ChevronLeft size={20} /></button>
+                    <div className="week-range">
+                        {format(currentWeekStart, 'MMM d')} - {format(addDays(currentWeekStart, 6), 'MMM d, yyyy')}
+                    </div>
+                    <button onClick={handleNextWeek} className="nav-btn"><ChevronRight size={20} /></button>
                 </div>
             </header>
 
@@ -40,6 +49,7 @@ const WeeklyPlanner = () => {
                 <div className="card intention-card">
                     <h3>Weekly Intention</h3>
                     <CreativeInput
+                        id={`weekly_intention_${weekKey}`}
                         placeholder="How do you want to feel this week?"
                         value={weeklyData.intention}
                         onChange={(val) => setWeeklyData({ ...weeklyData, intention: val })}
@@ -50,6 +60,7 @@ const WeeklyPlanner = () => {
                     {weeklyData.priorities.map((p, i) => (
                         <CreativeInput
                             key={i}
+                            id={`weekly_priority_${i}_${weekKey}`}
                             placeholder={`Priority ${i + 1}`}
                             value={p}
                             onChange={(val) => handlePriorityChange(i, val)}
@@ -60,6 +71,7 @@ const WeeklyPlanner = () => {
                 <div className="card selfcare-card">
                     <h3>Self-Care Focus</h3>
                     <CreativeInput
+                        id={`weekly_selfcare_${weekKey}`}
                         placeholder="How will you rest?"
                         value={weeklyData.selfCare}
                         onChange={(val) => setWeeklyData({ ...weeklyData, selfCare: val })}
@@ -76,6 +88,7 @@ const WeeklyPlanner = () => {
                         </div>
                         <div className="day-content">
                             <CreativeInput
+                                id={`weekly_day_${index}_${weekKey}`}
                                 placeholder="..."
                                 value={weeklyData.days[index]}
                                 onChange={(val) => handleDayChange(index, val)}

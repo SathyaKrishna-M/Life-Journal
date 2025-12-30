@@ -35,10 +35,14 @@
     /* Force 7 columns */
     gap: 0.8rem;
     overflow-x: auto;
-    overflow-y: hidden;
+    /* Allow horizontal scroll if needed for small screens */
+    overflow-y: auto;
+    /* Allow vertical scroll for content */
     flex: 1;
     min-height: 0;
     padding-bottom: 1rem;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
 .day-column {
@@ -51,7 +55,7 @@
     flex-direction: column;
 }
 
-.day-header {
+.weekly-page .day-header {
     padding: 0.8rem;
     background-color: var(--color-earth-2);
     color: white;

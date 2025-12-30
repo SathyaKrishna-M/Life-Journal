@@ -39,6 +39,7 @@ const Goals = () => {
                             transition={{ delay: index * 0.1 }}
                         >
                             <CreativeInput
+                                id={`goal_${cat.id}`}
                                 label={cat.label}
                                 placeholder={cat.placeholder}
                                 value={goals[cat.id] || ''}

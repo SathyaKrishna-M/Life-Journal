@@ -12,6 +12,17 @@ function useLocalStorage(key, initialValue) {
         }
     });
 
+    // Update stored value if the key changes (e.g. date navigation)
+    useEffect(() => {
+        try {
+            const item = window.localStorage.getItem(key);
+            setStoredValue(item ? JSON.parse(item) : initialValue);
+        } catch (error) {
+            console.log(error);
+            setStoredValue(initialValue);
+        }
+    }, [key]);
+
     // Return a wrapped version of useState's setter function that ...
     // ... persists the new value to localStorage.
     const setValue = (value) => {

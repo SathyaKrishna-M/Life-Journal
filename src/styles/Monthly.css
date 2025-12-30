@@ -20,6 +20,37 @@
     margin-bottom: 0.5rem;
 }
 
+.month-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.nav-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-earth-2);
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-btn:hover {
+    background-color: var(--color-earth-3);
+    color: var(--color-earth-1);
+}
+
+.year-label {
+    font-size: 1rem;
+    color: var(--color-text-light);
+    margin-bottom: 0.5rem;
+}
+
 .monthly-quote {
     font-style: italic;
     color: var(--color-sage);

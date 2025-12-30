@@ -103,39 +103,41 @@ const VisionBoard = () => {
                 />
             </div>
 
-            <div
-                className="vision-canvas bg-dotted"
-                ref={containerRef}
-                onDragOver={handleDragOver}
-                onDrop={handleDrop}
-            >
-                {images.map((img) => (
-                    <div
-                        key={img.id}
-                        className="vision-item"
-                        draggable
-                        onDragStart={(e) => handleDragStart(e, img.id)}
-                        style={{
-                            left: img.x,
-                            top: img.y,
-                            width: img.width,
-                            zIndex: img.zIndex,
-                            transform: `rotate(${getRotation(img.id)}deg)`
-                        }}
-                    >
-                        <div className="img-controls">
-                            <Trash2 size={16} onClick={() => removeImage(img.id)} className="control-icon trash" />
-                            <Move size={16} className="control-icon move" />
+            <div className="vision-content-wrapper">
+                <div
+                    className="vision-canvas bg-dotted"
+                    ref={containerRef}
+                    onDragOver={handleDragOver}
+                    onDrop={handleDrop}
+                >
+                    {images.map((img) => (
+                        <div
+                            key={img.id}
+                            className="vision-item"
+                            draggable
+                            onDragStart={(e) => handleDragStart(e, img.id)}
+                            style={{
+                                left: img.x,
+                                top: img.y,
+                                width: img.width,
+                                zIndex: img.zIndex,
+                                transform: `rotate(${getRotation(img.id)}deg)`
+                            }}
+                        >
+                            <div className="img-controls">
+                                <Trash2 size={16} onClick={() => removeImage(img.id)} className="control-icon trash" />
+                                <Move size={16} className="control-icon move" />
+                            </div>
+                            <img src={img.src} alt="vision" draggable={false} />
                         </div>
-                        <img src={img.src} alt="vision" draggable={false} />
-                    </div>
-                ))}
+                    ))}
 
-                {images.length === 0 && (
-                    <div className="empty-state">
-                        <p>Drag & Drop or Click "+ Add Image" to start your board.</p>
-                    </div>
-                )}
+                    {images.length === 0 && (
+                        <div className="empty-state">
+                            <p>Drag & Drop or Click "+ Add Image" to start your board.</p>
+                        </div>
+                    )}
+                </div>
             </div>
         </div>
     );

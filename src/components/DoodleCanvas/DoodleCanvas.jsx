@@ -12,7 +12,7 @@ const PRESET_COLORS = [
     '#E8DAEF', // Lavender
 ];
 
-const DoodleCanvas = ({ canvasId }) => {
+const DoodleCanvas = ({ canvasId, initialData }) => {
     const canvasRef = useRef(null);
     const [isDrawing, setIsDrawing] = useState(false);
     const [color, setColor] = useState('#4A4A4A');
@@ -26,24 +26,31 @@ const DoodleCanvas = ({ canvasId }) => {
         const ctx = canvas.getContext('2d');
 
         // Set initial size
-        // In a real app we might want to resize observer, for now fixed/flexible logic
         canvas.width = canvas.offsetWidth;
         canvas.height = 400; // Fixed height
-
-        // Restore
-        const saved = localStorage.getItem(`doodle_${canvasId}`);
-        if (saved) {
-            const img = new Image();
-            img.src = saved;
-            img.onload = () => {
-                ctx.drawImage(img, 0, 0);
-            };
-        }
 
         // Background defaults
         ctx.lineCap = 'round';
         ctx.lineJoin = 'round';
-    }, [canvasId]);
+
+        // Load Logic:
+        // 1. If initialData is provided (passed from parent), use it.
+        // 2. Else, check LocalStorage for this specific canvasId.
+
+        let source = initialData;
+        if (!source && canvasId) {
+            source = localStorage.getItem(`doodle_${canvasId}`);
+        }
+
+        if (source) {
+            const img = new Image();
+            img.src = source;
+            img.onload = () => {
+                ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear before drawing
+                ctx.drawImage(img, 0, 0);
+            };
+        }
+    }, [canvasId, initialData]);
 
     // Save on mouse up
     const endDrawing = () => {

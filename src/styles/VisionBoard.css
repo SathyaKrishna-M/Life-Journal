@@ -6,6 +6,18 @@
     padding-bottom: 0;
 }
 
+/* We need a scrolling wrapper for the content, or make the canvas scroll if it's the only thing */
+/* Assuming vision-canvas should be the scrollable area or a wrapper around it */
+.vision-content-wrapper {
+    flex: 1;
+    overflow-y: auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
 .vision-header {
     display: flex;
     justify-content: space-between;
