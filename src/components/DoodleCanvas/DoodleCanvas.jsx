@@ -54,17 +54,49 @@ const DoodleCanvas = ({ canvasId }) => {
         }
     };
 
-    const startDrawing = ({ nativeEvent }) => {
-        const { offsetX, offsetY } = nativeEvent;
+    const getCoordinates = (event) => {
+        if (!canvasRef.current) return { x: 0, y: 0 };
+        const canvas = canvasRef.current;
+        const rect = canvas.getBoundingClientRect();
+
+        let clientX, clientY;
+
+        if (event.touches && event.touches.length > 0) {
+            clientX = event.touches[0].clientX;
+            clientY = event.touches[0].clientY;
+        } else {
+            clientX = event.nativeEvent.offsetX;
+            clientY = event.nativeEvent.offsetY;
+            // Native offset is already relative, but we need consistent logic
+            // For mouse, nativeEvent.offsetX is correct relative to node
+            return { x: clientX, y: clientY };
+        }
+
+        return {
+            x: clientX - rect.left,
+            y: clientY - rect.top
+        };
+    };
+
+    const startDrawing = (event) => {
+        // event.preventDefault(); // Prevent default touch actions (scrolling) - handled by touch-action: none but good practice
+        if (event.type === 'touchstart') {
+            // prevent scrolling
+            // event.preventDefault(); 
+            // Note: React synthetic events might need passive: false listener for preventDefault
+            // style={{ touchAction: 'none' }} is better
+        }
+
+        const { x, y } = getCoordinates(event);
         const ctx = canvasRef.current.getContext('2d');
         ctx.beginPath();
-        ctx.moveTo(offsetX, offsetY);
+        ctx.moveTo(x, y);
         setIsDrawing(true);
     };
 
-    const draw = ({ nativeEvent }) => {
+    const draw = (event) => {
         if (!isDrawing) return;
-        const { offsetX, offsetY } = nativeEvent;
+        const { x, y } = getCoordinates(event);
         const ctx = canvasRef.current.getContext('2d');
 
         if (mode === 'erase') {
@@ -76,7 +108,7 @@ const DoodleCanvas = ({ canvasId }) => {
             ctx.lineWidth = brushSize;
         }
 
-        ctx.lineTo(offsetX, offsetY);
+        ctx.lineTo(x, y);
         ctx.stroke();
     };
 
@@ -128,6 +160,10 @@ const DoodleCanvas = ({ canvasId }) => {
                 onMouseUp={endDrawing}
                 onMouseMove={draw}
                 onMouseLeave={endDrawing}
+                onTouchStart={startDrawing}
+                onTouchEnd={endDrawing}
+                onTouchMove={draw}
+                style={{ touchAction: 'none' }} // Prevent scrolling while drawing
             />
         </div>
     );

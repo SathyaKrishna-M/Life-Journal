@@ -61,6 +61,8 @@ body,
   /* IE and Edge */
   scrollbar-width: none;
   /* Firefox */
+  -webkit-overflow-scrolling: touch;
+  /* Momentum scrolling for iOS */
 }
 
 body {
